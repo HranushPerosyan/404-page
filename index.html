@@ -176,7 +176,22 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #0d3b1a 0%, #1a5c2a 30%, #2d8a4e 60%, #1a5c2a 100%);
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/modern-australian-home-front-yard-artificial-turf-contemporary-residential-house-grass-lawn-clean-low-410765330.webp?v=1793296543');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13, 59, 26, 0.85), rgba(26, 92, 42, 0.75), rgba(45, 138, 78, 0.7));
+            z-index: 2;
         }
 
         .hero-bg-pattern {
@@ -187,36 +202,14 @@
                 radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(102,187,106,0.4) 0%, transparent 40%),
                 radial-gradient(circle at 60% 80%, rgba(255,255,255,0.2) 0%, transparent 40%);
-        }
-
-        .hero-grass {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .grass-blade {
-            position: absolute;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to top, #2d8a4e, #66bb6a);
-            border-radius: 50% 50% 0 0;
-            transform-origin: bottom center;
-            animation: sway 3s ease-in-out infinite;
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
+            z-index: 3;
         }
 
         .hero-particles {
             position: absolute;
             inset: 0;
             pointer-events: none;
+            z-index: 4;
         }
 
         .particle {
@@ -577,39 +570,14 @@
             border-radius: 16px;
             overflow: hidden;
             aspect-ratio: 4/3;
-            background: linear-gradient(135deg, #4caf50, #2e7d32);
             cursor: pointer;
             transition: transform 0.3s;
+            background-size: cover;
+            background-position: center;
         }
 
         .gallery-item:hover {
             transform: scale(1.03);
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 10px,
-                rgba(255,255,255,0.03) 10px,
-                rgba(255,255,255,0.03) 11px
-            );
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 4px,
-                rgba(0,0,0,0.02) 4px,
-                rgba(0,0,0,0.02) 5px
-            );
         }
 
         .gallery-overlay {
@@ -702,6 +670,24 @@
             font-weight: 700;
             transform: rotate(45deg);
             letter-spacing: 1px;
+        }
+
+        .comparison-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3));
         }
 
         .comparison-card-header {
@@ -799,10 +785,30 @@
 
         /* Pricing Section */
         .pricing {
-            background: linear-gradient(135deg, #0d3b1a, #1a5c2a, #2d8a4e);
-            color: var(--white);
             position: relative;
+            color: var(--white);
             overflow: hidden;
+        }
+
+        .pricing-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/360_F_2060065365_veVreELBZQ36hO9nH3zQwFszT2cVuPON.jpg?v=1793297667');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .pricing-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13, 59, 26, 0.92), rgba(26, 92, 42, 0.88), rgba(45, 138, 78, 0.85));
+            z-index: 2;
+        }
+
+        .pricing > * {
+            position: relative;
+            z-index: 3;
         }
 
         .pricing::before {
@@ -812,6 +818,8 @@
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(102,187,106,0.2) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(249,168,37,0.1) 0%, transparent 40%);
+            z-index: 3;
+            pointer-events: none;
         }
 
         .pricing .section-header h2 {
@@ -834,7 +842,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             position: relative;
-            z-index: 2;
+            z-index: 4;
         }
 
         .pricing-card {
@@ -957,7 +965,7 @@
             align-items: center;
             gap: 1.5rem;
             position: relative;
-            z-index: 2;
+            z-index: 4;
         }
 
         .affordability-banner .icon {
@@ -1463,11 +1471,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-bg-overlay"></div>
         <div class="hero-bg-pattern"></div>
         
         <div class="hero-particles" id="particles"></div>
-        
-        <div class="hero-grass" id="heroGrass"></div>
 
         <div class="hero-content">
             <div class="hero-text">
@@ -1538,7 +1546,15 @@
         </div>
 
         <div class="gallery-grid reveal">
-            <div class="gallery-item" style="background: linear-gradient(135deg, #66bb6a, #2e7d32);">
+            <div class="gallery-item" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/front-yard-synthetic-grass-pavers-plants-sm-1-400x400.jpg?v=1793297033');">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-text">
+                        <h4>Front Yard with Pavers</h4>
+                        <p>Modern design with synthetic grass</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/images_3.jpg?v=1793297034');">
                 <div class="gallery-overlay">
                     <div class="gallery-overlay-text">
                         <h4>Residential Backyard</h4>
@@ -1546,7 +1562,7 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #4caf50, #1b5e20);">
+            <div class="gallery-item" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/b5f5d82ad92277f4577d8515bd64aa05.0000000.jpg?v=1793297034');">
                 <div class="gallery-overlay">
                     <div class="gallery-overlay-text">
                         <h4>Front Yard Makeover</h4>
@@ -1554,27 +1570,19 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #81c784, #388e3c);">
+            <div class="gallery-item" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/Front-Yard-Coronado-Tracy.jpg?v=1793297034');">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-text">
+                        <h4>Coronado Project</h4>
+                        <p>Beautiful residential installation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/DSC5133-2-scaled.jpg?v=1793297035');">
                 <div class="gallery-overlay">
                     <div class="gallery-overlay-text">
                         <h4>Commercial Space</h4>
                         <p>Professional office entrance</p>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #a5d6a7, #2e7d32);">
-                <div class="gallery-overlay">
-                    <div class="gallery-overlay-text">
-                        <h4>Pet-Friendly Area</h4>
-                        <p>Durable and easy to clean</p>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
-                <div class="gallery-overlay">
-                    <div class="gallery-overlay-text">
-                        <h4>Rooftop Garden</h4>
-                        <p>Urban oasis created</p>
                     </div>
                 </div>
             </div>
@@ -1599,6 +1607,7 @@
 
         <div class="comparison-grid reveal">
             <div class="comparison-card natural">
+                <div class="comparison-image" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/dry-and-damaged-grass-needs-lawn-care-royalty-free-image-1747944970.avif?v=1793297897');"></div>
                 <div class="comparison-card-header">
                     <div class="comparison-icon">🌾</div>
                     <div>
@@ -1643,6 +1652,7 @@
             </div>
 
             <div class="comparison-card artificial">
+                <div class="comparison-image" style="background-image: url('https://cdn.shopify.com/s/files/1/0997/6004/6396/files/71_wHbfwpRL.jpg?v=1793297897');"></div>
                 <div class="comparison-card-header">
                     <div class="comparison-icon">🌿</div>
                     <div>
@@ -1686,6 +1696,8 @@
 
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
+        <div class="pricing-bg"></div>
+        <div class="pricing-bg-overlay"></div>
         <div class="section-header reveal">
             <span class="section-tag">💰 Affordable Excellence</span>
             <h2>Quality That Fits Your Budget</h2>
@@ -1998,19 +2010,6 @@
                 navLinks.classList.remove('active');
             });
         });
-
-        // Generate grass blades
-        const heroGrass = document.getElementById('heroGrass');
-        for (let i = 0; i < 80; i++) {
-            const blade = document.createElement('div');
-            blade.className = 'grass-blade';
-            blade.style.left = `${Math.random() * 100}%`;
-            blade.style.height = `${40 + Math.random() * 80}px`;
-            blade.style.animationDelay = `${Math.random() * 3}s`;
-            blade.style.animationDuration = `${2 + Math.random() * 2}s`;
-            blade.style.opacity = 0.3 + Math.random() * 0.5;
-            heroGrass.appendChild(blade);
-        }
 
         // Generate particles
         const particlesContainer = document.getElementById('particles');
